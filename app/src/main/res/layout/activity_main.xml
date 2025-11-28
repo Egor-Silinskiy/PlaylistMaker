@@ -39,7 +39,7 @@
             app:icon="@drawable/search"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
-            app:iconTint="@color/main_black" />
+            app:iconTint="@color/main_black"/>
 
         <Button
             android:id="@+id/button2"

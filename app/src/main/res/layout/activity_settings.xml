@@ -22,7 +22,7 @@
             app:icon="@drawable/arrow_back"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
-            app:iconTint="@color/sett_black" />
+            app:iconTint="@color/sett_black"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -34,7 +34,7 @@
             android:textFontWeight="500"
             android:textColor="@color/main_black"
             android:text="@string/main_settings"
-            android:textSize="@dimen/title_text_size" />
+            android:textSize="@dimen/title_text_size"/>
     </LinearLayout>
 
     <FrameLayout
@@ -58,7 +58,7 @@
             android:layout_height="40dp"
             android:paddingEnd="6dp"
             android:layout_gravity="center_vertical|end"
-            tools:checked="true" />
+            tools:checked="true"/>
 
     </FrameLayout>
 
@@ -81,9 +81,10 @@
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/share"
+            app:srcCompat="@drawable/share"
+            android:fillColor="#AEAFB4"
             android:layout_gravity="center_vertical|end"
-            android:paddingEnd="@dimen/second_padding_end"/>
+            android:layout_marginEnd="@dimen/second_padding_end"/>
     </FrameLayout>
 
     <FrameLayout
@@ -105,9 +106,9 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/support"
+            app:srcCompat="@drawable/support"
             android:layout_gravity="center_vertical|end"
-            android:paddingEnd="@dimen/second_padding_end"/>
+            android:layout_marginEnd="@dimen/second_padding_end"/>
     </FrameLayout>
 
     <FrameLayout
@@ -129,9 +130,8 @@
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/arrow_forward"
+            app:srcCompat="@drawable/arrow_forward"
             android:layout_gravity="center_vertical|end"
-            android:paddingEnd="@dimen/second_padding_end"/>
+            android:layout_marginEnd="@dimen/second_padding_end"/>
     </FrameLayout>
-
 </LinearLayout>
