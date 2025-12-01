@@ -10,15 +10,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="@dimen/second_layout_size">
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="@color/white"
+            android:layout_width="@dimen/sett_layout_back"
+            android:layout_height="@dimen/sett_layout_back"
+            android:layout_marginStart="@dimen/sett_button_margin"
+            android:layout_marginTop="@dimen/sett_button_margin"
+            android:background="@android:color/transparent"
+            android:stateListAnimator="@null"
             app:icon="@drawable/arrow_back"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
@@ -54,7 +55,7 @@
             android:textColor="@color/sett_black"/>
 
         <Switch
-            android:layout_width="56dp"
+            android:layout_width="@dimen/second_layout_size"
             android:layout_height="40dp"
             android:paddingEnd="6dp"
             android:layout_gravity="center_vertical|end"

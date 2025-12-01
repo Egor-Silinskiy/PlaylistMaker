@@ -34,11 +34,14 @@
             android:textColor="@color/main_black"
             android:backgroundTint="@color/white"
             android:text="@string/main_search"
+            android:textSize="@dimen/button_text_size"
+            android:letterSpacing="0"
             android:textFontWeight="500"
             app:cornerRadius="@dimen/corner_radius"
             app:icon="@drawable/search"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
+            android:textAllCaps="false"
             app:iconTint="@color/main_black"/>
 
         <Button
@@ -48,13 +51,16 @@
             android:layout_weight="1"
             android:textColor="@color/main_black"
             android:backgroundTint="@color/white"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/main_button_margin"
             android:textFontWeight="500"
             android:text="@string/main_mediateka"
+            android:textSize="@dimen/button_text_size"
+            android:letterSpacing="0"
             app:cornerRadius="@dimen/corner_radius"
             app:icon="@drawable/library"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
+            android:textAllCaps="false"
             app:iconTint="@color/main_black"/>
 
         <Button
@@ -64,13 +70,16 @@
             android:layout_weight="1"
             android:textColor="@color/main_black"
             android:backgroundTint="@color/white"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/main_button_margin"
             android:textFontWeight="500"
             android:text="@string/main_settings"
+            android:textSize="@dimen/button_text_size"
+            android:letterSpacing="0"
             app:cornerRadius="@dimen/corner_radius"
             app:icon="@drawable/settings"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
+            android:textAllCaps="false"
             app:iconTint="@color/main_black"/>
 
     </LinearLayout>
