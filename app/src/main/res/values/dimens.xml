@@ -12,5 +12,6 @@
     <dimen name="sett_button_margin">4dp</dimen>
     <dimen name="sett_layout_back">48dp</dimen>
     <dimen name="second_layout_size">56dp</dimen>
+    <dimen name="padding_top">14dp</dimen>
 
 </resources>

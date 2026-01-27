@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/sett_background"
     android:id="@+id/main"
     android:orientation="vertical">
 
@@ -23,19 +23,15 @@
             app:icon="@drawable/arrow_back"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/icon_padding"
-            app:iconTint="@color/sett_black"/>
+            app:iconTint="@color/sett_title_button"/>
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            style="@style/TitleTextStyle"
             android:layout_height="52dp"
-            android:layout_gravity="start"
-            android:paddingTop="14dp"
             android:paddingStart="12dp"
-            android:textFontWeight="500"
-            android:textColor="@color/main_black"
-            android:text="@string/main_settings"
-            android:textSize="@dimen/title_text_size"/>
+            android:textColor="@color/sett_title_text"
+            android:text="@string/main_settings"/>
     </LinearLayout>
 
     <FrameLayout
@@ -45,21 +41,17 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
             android:text="@string/sett_theme"
-            android:textFontWeight="400"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <Switch
             android:layout_width="@dimen/second_layout_size"
             android:layout_height="40dp"
             android:paddingEnd="6dp"
             android:layout_gravity="center_vertical|end"
-            tools:checked="true"/>
+            tools:checked="true"
+            android:thumbTint="@color/thumb_tint"
+            android:trackTint="@color/track_tint"/>
 
     </FrameLayout>
 
@@ -69,23 +61,13 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
             android:text="@string/sett_share"
-            android:textFontWeight="400"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/share"
-            android:fillColor="#AEAFB4"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/second_padding_end"/>
+            style="@style/SettingsImageStyle"/>
     </FrameLayout>
 
     <FrameLayout
@@ -94,22 +76,13 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
-            android:textFontWeight="400"
             android:text="@string/sett_support"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/support"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/second_padding_end"/>
+            style="@style/SettingsImageStyle"/>
     </FrameLayout>
 
     <FrameLayout
@@ -118,21 +91,12 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
             android:text="@string/sett_agreement"
-            android:textFontWeight="400"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/arrow_forward"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/second_padding_end"/>
+            style="@style/SettingsImageStyle"/>
     </FrameLayout>
 </LinearLayout>

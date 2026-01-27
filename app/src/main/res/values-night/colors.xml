@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_background">#1A1B22</color>
+    <color name="main_title">#FFFFFF</color>
+    <color name="main_button">#1A1B22</color>
+    <color name="main_button_background">#FFFFFF</color>
+    <color name="main_icon">#1A1B22</color>
+    <color name="sett_background">#1A1B22</color>
+    <color name="sett_title_button">#FFFFFF</color>
+    <color name="sett_title_text">#FFFFFF</color>
+    <color name="sett_text">#FFFFFF</color>
+    <color name="sett_image">#FFFFFF</color>
+    <color name="thumb_tint">#3772E7</color>
+    <color name="track_tint">#9FBBF3</color>
+</resources>
