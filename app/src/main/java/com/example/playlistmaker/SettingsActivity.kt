@@ -3,6 +3,7 @@ package com.example.playlistmaker
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,6 +27,21 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(settingsIntent)
         }
 
+        val shareFrame = findViewById<FrameLayout>(R.id.shareFrame)
 
+        shareFrame.setOnClickListener {
+            shareApp()
+        }
+
+    }
+
+    private fun shareApp() {
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.share_message))
+        }
+
+        val chooser = Intent.createChooser(shareIntent, getString(R.string.sett_share))
+        startActivity(chooser)
     }
 }
