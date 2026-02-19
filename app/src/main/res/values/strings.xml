@@ -7,4 +7,8 @@
     <string name="sett_share">Поделиться приложением</string>
     <string name="sett_support">Написать в поддержку</string>
     <string name="sett_agreement">Пользовательское соглашение</string>
+    <string name="share_message" translatable="false">https://practicum.yandex.ru/android-developer/</string>
+    <string name="message_support">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+    <string name="message_title">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="offer_url" translatable="false">https://yandex.ru/legal/practicum_offer/ru/</string>
 </resources>

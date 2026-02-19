@@ -56,8 +56,12 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/shareFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height">
+        android:layout_height="@dimen/frame_layout_height"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground">
 
         <TextView
             android:id="@+id/textView4"
@@ -71,6 +75,7 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/supportFrame"
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_layout_height">
 
@@ -86,6 +91,7 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/agreementFrame"
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_layout_height">
 
