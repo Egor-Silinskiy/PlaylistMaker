@@ -59,25 +59,28 @@
         android:id="@+id/shareFrame"
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_layout_height"
+        android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground">
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView4"
-            android:text="@string/sett_share"
-            style="@style/SettingsTextStyle"/>
+            style="@style/SettingsTextStyle"
+            android:text="@string/sett_share" />
 
         <ImageView
             android:id="@+id/imageView1"
-            app:srcCompat="@drawable/share"
-            style="@style/SettingsImageStyle"/>
+            style="@style/SettingsImageStyle"
+            app:srcCompat="@drawable/share" />
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/supportFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height">
+        android:layout_height="@dimen/frame_layout_height"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView5"
@@ -93,7 +96,10 @@
     <FrameLayout
         android:id="@+id/agreementFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height">
+        android:layout_height="@dimen/frame_layout_height"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView6"
