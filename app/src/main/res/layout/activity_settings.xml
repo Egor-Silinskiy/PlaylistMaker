@@ -8,36 +8,25 @@
     android:id="@+id/main"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/second_layout_size">
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="@dimen/sett_layout_back"
-            android:layout_height="@dimen/sett_layout_back"
-            android:layout_marginStart="@dimen/sett_button_margin"
-            android:layout_marginTop="@dimen/sett_button_margin"
-            android:background="@android:color/transparent"
-            android:stateListAnimator="@null"
-            app:icon="@drawable/arrow_back"
-            app:iconGravity="textStart"
-            app:iconPadding="@dimen/icon_padding"
-            app:iconTint="@color/sett_title_button"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/TitleTextStyle"
-            android:layout_height="52dp"
-            android:paddingStart="12dp"
-            android:textColor="@color/sett_title_text"
-            android:text="@string/main_settings"/>
-    </LinearLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/arrow_back"
+        app:navigationIconTint="@color/sett_title_button"
+        app:title="@string/main_settings"
+        app:titleTextColor="@color/sett_title_text"
+        app:titleTextAppearance="@style/TitleTextStyle"
+        app:contentInsetStart="12dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_layout_height"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="24dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView3"

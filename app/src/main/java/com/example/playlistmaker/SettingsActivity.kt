@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -21,9 +22,11 @@ class SettingsActivity : AppCompatActivity() {
             insets
         }
 
-        val button4 = findViewById<Button>(R.id.button4)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        button4.setOnClickListener {
+        toolbar.setNavigationOnClickListener {
             val settingsIntent = Intent(this, MainActivity::class.java)
             startActivity(settingsIntent)
         }

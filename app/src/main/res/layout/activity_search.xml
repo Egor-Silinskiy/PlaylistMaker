@@ -1,17 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/sett_background"
     android:id="@+id/main"
-    tools:context=".SearchActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/message"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Это экран поиска"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/arrow_back"
+        app:navigationIconTint="@color/sett_title_button"
+        app:title="@string/main_search"
+        app:titleTextColor="@color/sett_title_text"
+        app:titleTextAppearance="@style/TitleTextStyle"
+        app:contentInsetStart="12dp" />
 
-</FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="0dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:background="@drawable/search_edit_text"
+            android:drawableStart=""
+            android:drawablePadding="9dp"
+            android:drawableTint="@color/icon_color_search"
+            android:fontFamily="@font/ys_display_regular"
+            android:hint="@string/search"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:lines="1"
+            android:paddingStart="13dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_color_search"
+            android:textFontWeight="400"
+            android:textSize="@dimen/text_size_settings"
+            android:theme="@style/BlueCursorTheme"
+            tools:ignore="Autofill,DuplicateSpeakableTextCheck,RtlSymmetry,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginHorizontal="28dp"
+            android:contentDescription="@string/clear"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_clear_16"
+            app:tint="@color/text_color_search" />
+    </FrameLayout>
+
+</LinearLayout>

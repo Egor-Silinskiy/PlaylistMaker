@@ -13,5 +13,6 @@
     <dimen name="sett_layout_back">48dp</dimen>
     <dimen name="second_layout_size">56dp</dimen>
     <dimen name="padding_top">14dp</dimen>
+    <dimen name="search_edit_text">52dp</dimen>
 
 </resources>
