@@ -7,12 +7,20 @@
     <dimen name="icon_padding">8dp</dimen>
     <dimen name="second_padding_start">16dp</dimen>
     <dimen name="second_padding_end">12dp</dimen>
-    <dimen name="frame_layout_height">61dp</dimen>
+    <dimen name="sett_layout_height">61dp</dimen>
     <dimen name="main_button_margin">16dp</dimen>
     <dimen name="sett_button_margin">4dp</dimen>
     <dimen name="sett_layout_back">48dp</dimen>
     <dimen name="second_layout_size">56dp</dimen>
     <dimen name="padding_top">14dp</dimen>
     <dimen name="search_edit_text">52dp</dimen>
+    <dimen name="toolbar_inset_start">12dp</dimen>
+    <dimen name="search_layout_height">52dp</dimen>
+    <dimen name="search_margin_horizontal">16dp</dimen>
+    <dimen name="clear_margin_end">28dp</dimen>
+    <dimen name="search_padding_vertical">8dp</dimen>
+    <dimen name="search_drawable_padding">8dp</dimen>
+    <dimen name="search_padding_start">12dp</dimen>
+
 
 </resources>

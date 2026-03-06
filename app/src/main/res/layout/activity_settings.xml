@@ -18,11 +18,11 @@
         app:title="@string/main_settings"
         app:titleTextColor="@color/sett_title_text"
         app:titleTextAppearance="@style/TitleTextStyle"
-        app:contentInsetStart="12dp" />
+        app:contentInsetStart="@dimen/toolbar_inset_start"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height"
+        android:layout_height="@dimen/sett_layout_height"
         android:layout_marginTop="24dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
@@ -47,7 +47,7 @@
     <FrameLayout
         android:id="@+id/shareFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height"
+        android:layout_height="@dimen/sett_layout_height"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true">
@@ -66,7 +66,7 @@
     <FrameLayout
         android:id="@+id/supportFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height"
+        android:layout_height="@dimen/sett_layout_height"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true">
@@ -85,7 +85,7 @@
     <FrameLayout
         android:id="@+id/agreementFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height"
+        android:layout_height="@dimen/sett_layout_height"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true">
