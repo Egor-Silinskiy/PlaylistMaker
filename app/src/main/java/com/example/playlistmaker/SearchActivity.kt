@@ -2,6 +2,8 @@ package com.example.playlistmaker
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -13,6 +15,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class SearchActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,21 +38,37 @@ class SearchActivity : AppCompatActivity() {
         }
 
         /* кнопка сброса */
-        val frameLayout = findViewById<FrameLayout>(R.id.container)
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
-        val clearButton = findViewById<ImageView>(R.id.clearImage)
+        val clearImage = findViewById<ImageView>(R.id.clearImage)
 
-        clearButton.setOnClickListener {
-            searchEditText.setText("")
+        clearImage.setOnClickListener {
+            searchEditText.text.clear()
         }
-        // логика по работе с введённым значением
 
-    }
+        val simpleTextWatcher = object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                    // Не используется
+                }
 
-    private fun clearButtonVisibility(s: CharSequence?): Int {
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    // Показываем или скрываем кнопку в зависимости от наличия текста
+                    updateClearButtonVisibility(s)
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    // Не используется
+                }
+            }
+        searchEditText.addTextChangedListener(simpleTextWatcher)
+        }
+
+
+    private fun updateClearButtonVisibility(s: CharSequence?): Int {
         return if (s.isNullOrEmpty()) {
             View.GONE
         } else {
             View.VISIBLE
         }
-    }}
+    }
+
+}
