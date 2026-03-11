@@ -14,7 +14,6 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent"
         app:navigationIcon="@drawable/arrow_back"
-        app:navigationIconTint="@color/sett_title_button"
         app:title="@string/main_settings"
         app:titleTextColor="@color/sett_title_text"
         app:titleTextAppearance="@style/TitleTextStyle"

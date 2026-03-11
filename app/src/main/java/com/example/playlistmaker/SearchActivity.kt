@@ -41,6 +41,10 @@ class SearchActivity : AppCompatActivity() {
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
         val clearImage = findViewById<ImageView>(R.id.clearImage)
 
+        fun updateClearButtonVisibility(s: CharSequence?) {
+            clearImage.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+        }
+
         clearImage.setOnClickListener {
             searchEditText.text.clear()
         }
@@ -60,15 +64,17 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
         searchEditText.addTextChangedListener(simpleTextWatcher)
+
+        updateClearButtonVisibility(searchEditText.text)
         }
 
 
-    private fun updateClearButtonVisibility(s: CharSequence?): Int {
+    /*private fun updateClearButtonVisibility(s: CharSequence?): Int {
         return if (s.isNullOrEmpty()) {
             View.GONE
         } else {
             View.VISIBLE
         }
-    }
+    }*/
 
 }

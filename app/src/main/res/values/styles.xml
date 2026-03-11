@@ -50,6 +50,11 @@
 
     </style>
 
+    <style name="BlueCursorTheme">
+        <item name="colorControlActivated">@color/cursor</item>
+        <item name="colorAccent">@color/cursor</item>
+    </style>
+
 
 
 
