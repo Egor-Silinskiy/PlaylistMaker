@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class SearchActivity : AppCompatActivity() {
 
-
+    private var currentSearchText: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,8 @@ class SearchActivity : AppCompatActivity() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    // Показываем или скрываем кнопку в зависимости от наличия текста
+                    // Visibility в зависимости от наличия текста
+                    currentSearchText = s?.toString().orEmpty()
                     updateClearButtonVisibility(s)
                 }
 
@@ -65,16 +66,20 @@ class SearchActivity : AppCompatActivity() {
             }
         searchEditText.addTextChangedListener(simpleTextWatcher)
 
-        updateClearButtonVisibility(searchEditText.text)
+        if (savedInstanceState != null) {
+            updateClearButtonVisibility(searchEditText.text)
         }
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("SEARCH_TEXT", currentSearchText)
+    }
 
-    /*private fun updateClearButtonVisibility(s: CharSequence?): Int {
-        return if (s.isNullOrEmpty()) {
-            View.GONE
-        } else {
-            View.VISIBLE
-        }
-    }*/
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val restoredText = savedInstanceState.getString("SEARCH_TEXT", "")
+        findViewById<EditText>(R.id.searchEditText).setText(restoredText)
+    }
 
 }
