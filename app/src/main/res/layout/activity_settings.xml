@@ -22,10 +22,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/sett_layout_height"
-        android:layout_marginTop="24dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true">
+        android:layout_marginTop="24dp">
 
         <TextView
             android:id="@+id/textView3"
@@ -33,13 +30,14 @@
             style="@style/SettingsTextStyle"/>
 
         <Switch
+            android:id="@+id/switchSett"
             android:layout_width="@dimen/second_layout_size"
             android:layout_height="40dp"
-            android:paddingEnd="6dp"
             android:layout_gravity="center_vertical|end"
-            tools:checked="true"
+            android:paddingEnd="6dp"
             android:thumbTint="@color/thumb_tint"
-            android:trackTint="@color/track_tint"/>
+            android:trackTint="@color/track_tint"
+            tools:checked="true" />
 
     </FrameLayout>
 

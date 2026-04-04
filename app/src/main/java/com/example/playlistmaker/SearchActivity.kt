@@ -1,12 +1,13 @@
 package com.example.playlistmaker
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class SearchActivity : AppCompatActivity() {
+
 
     private var currentSearchText: String = ""
 
@@ -47,6 +49,7 @@ class SearchActivity : AppCompatActivity() {
 
         clearImage.setOnClickListener {
             searchEditText.text.clear()
+            hideKeyboard(searchEditText)
         }
 
         val simpleTextWatcher = object : TextWatcher {
@@ -80,6 +83,12 @@ class SearchActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         val restoredText = savedInstanceState.getString("SEARCH_TEXT", "")
         findViewById<EditText>(R.id.searchEditText).setText(restoredText)
+    }
+
+    private fun hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        view.clearFocus()
     }
 
 }
