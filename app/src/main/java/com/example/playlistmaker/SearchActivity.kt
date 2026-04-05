@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.doOnTextChanged
 
 class SearchActivity : AppCompatActivity() {
 
@@ -52,7 +53,12 @@ class SearchActivity : AppCompatActivity() {
             hideKeyboard(searchEditText)
         }
 
-        val simpleTextWatcher = object : TextWatcher {
+        searchEditText.doOnTextChanged { text, _, _, _ ->
+            currentSearchText = text?.toString().orEmpty()
+            updateClearButtonVisibility(text)
+        }
+
+        /*val simpleTextWatcher = object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                     // Не используется
                 }
@@ -67,7 +73,7 @@ class SearchActivity : AppCompatActivity() {
                     // Не используется
                 }
             }
-        searchEditText.addTextChangedListener(simpleTextWatcher)
+        searchEditText.addTextChangedListener(simpleTextWatcher)*/
 
         if (savedInstanceState != null) {
             updateClearButtonVisibility(searchEditText.text)
@@ -76,12 +82,12 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("SEARCH_TEXT", currentSearchText)
+        outState.putString(Constants.SEARCH_KEY, currentSearchText)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        val restoredText = savedInstanceState.getString("SEARCH_TEXT", "")
+        val restoredText = savedInstanceState.getString(Constants.SEARCH_KEY, "")
         findViewById<EditText>(R.id.searchEditText).setText(restoredText)
     }
 

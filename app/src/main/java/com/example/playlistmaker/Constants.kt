@@ -1,5 +1,5 @@
 package com.example.playlistmaker
 
-object EmailConstants {
-    const val SUPPORT_ADDRESS = "egorkakegotam@yandex.ru"
+object Constants {
+    const val SEARCH_KEY = "SEARCH_TEXT"
 }

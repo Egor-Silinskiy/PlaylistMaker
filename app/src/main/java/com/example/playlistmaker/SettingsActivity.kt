@@ -39,11 +39,12 @@ class SettingsActivity : AppCompatActivity() {
         val supportFrame = findViewById<FrameLayout>(R.id.supportFrame)
 
         supportFrame.setOnClickListener {
+            val supportEmail = getString(R.string.support_email)
             val messageSupport = getString(R.string.message_support)
             val messageTitle = getString(R.string.message_title)
             val supportIntent = Intent(Intent.ACTION_SENDTO)
             supportIntent.data = Uri.parse("mailto:")
-            supportIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(EmailConstants.SUPPORT_ADDRESS))
+            supportIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(supportEmail))
             supportIntent.putExtra(Intent.EXTRA_SUBJECT, messageTitle)
             supportIntent.putExtra(Intent.EXTRA_TEXT, messageSupport)
             startActivity(supportIntent)
