@@ -7,7 +7,7 @@
     <string name="sett_share">Share the app</string>
     <string name="sett_support">Support</string>
     <string name="sett_agreement">User agreement</string>
-
-
+    <string name="message_support">Thanks to the developers and developers for the cool app!</string>
+    <string name="message_title">Message to the developers and developers of the Playlist Maker app</string>
 
 </resources>

@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/search_background"
     android:id="@+id/main"
-    tools:context=".SearchActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/message"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Это экран поиска"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/arrow_back"
+        app:title="@string/main_search"
+        app:titleTextColor="@color/search_title_text"
+        app:titleTextAppearance="@style/TitleTextStyle"
+        app:contentInsetStart="@dimen/toolbar_inset_start" />
 
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_layout_height"
+        android:paddingBottom="@dimen/search_padding_vertical"
+        android:paddingTop="@dimen/search_padding_vertical">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/search_margin_horizontal"
+            android:layout_marginEnd="@dimen/search_margin_horizontal"
+            android:background="@drawable/back_search_field"
+            android:drawableStart="@drawable/search_edit_text"
+            android:drawablePadding="@dimen/search_drawable_padding"
+            android:fontFamily="@font/ys_display_regular"
+            android:hint="@string/main_search"
+            android:inputType="text"
+            android:textColor="@color/search_text"
+            android:singleLine="true"
+            android:paddingStart="@dimen/search_padding_start"
+            android:textColorHint="@color/search_edit_hint"
+            android:theme="@style/BlueCursorTheme"
+            android:textFontWeight="400"
+            android:textSize="@dimen/second_text_size" />
+
+        <ImageView
+            android:id="@+id/clearImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/clear_margin_end"
+            android:layout_gravity="center_vertical|end"
+            app:srcCompat="@drawable/clear"
+            app:tint="@color/search_edit_clear"
+            android:visibility="gone"/>
+
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -4,135 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/sett_background"
     android:id="@+id/main"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/second_layout_size">
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="@dimen/sett_layout_back"
-            android:layout_height="@dimen/sett_layout_back"
-            android:layout_marginStart="@dimen/sett_button_margin"
-            android:layout_marginTop="@dimen/sett_button_margin"
-            android:background="@android:color/transparent"
-            android:stateListAnimator="@null"
-            app:icon="@drawable/arrow_back"
-            app:iconGravity="textStart"
-            app:iconPadding="@dimen/icon_padding"
-            app:iconTint="@color/sett_black"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="52dp"
-            android:layout_gravity="start"
-            android:paddingTop="14dp"
-            android:paddingStart="12dp"
-            android:textFontWeight="500"
-            android:textColor="@color/main_black"
-            android:text="@string/main_settings"
-            android:textSize="@dimen/title_text_size"/>
-    </LinearLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/arrow_back"
+        app:title="@string/main_settings"
+        app:titleTextColor="@color/sett_title_text"
+        app:titleTextAppearance="@style/TitleTextStyle"
+        app:contentInsetStart="@dimen/toolbar_inset_start"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height"
+        android:layout_height="@dimen/sett_layout_height"
         android:layout_marginTop="24dp">
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
             android:text="@string/sett_theme"
-            android:textFontWeight="400"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <Switch
+            android:id="@+id/switchSett"
             android:layout_width="@dimen/second_layout_size"
             android:layout_height="40dp"
-            android:paddingEnd="6dp"
             android:layout_gravity="center_vertical|end"
-            tools:checked="true"/>
+            android:paddingEnd="6dp"
+            android:thumbTint="@color/thumb_tint"
+            android:trackTint="@color/track_tint"
+            tools:checked="true" />
 
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/shareFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height">
+        android:layout_height="@dimen/sett_layout_height"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
-            android:text="@string/sett_share"
-            android:textFontWeight="400"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"
+            android:text="@string/sett_share" />
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/share"
-            android:fillColor="#AEAFB4"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/second_padding_end"/>
+            style="@style/SettingsImageStyle"
+            app:srcCompat="@drawable/share" />
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/supportFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height">
+        android:layout_height="@dimen/sett_layout_height"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
-            android:textFontWeight="400"
             android:text="@string/sett_support"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/support"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/second_padding_end"/>
+            style="@style/SettingsImageStyle"/>
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/agreementFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/frame_layout_height">
+        android:layout_height="@dimen/sett_layout_height"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:paddingStart="@dimen/second_padding_start"
-            android:textSize="@dimen/second_text_size"
             android:text="@string/sett_agreement"
-            android:textFontWeight="400"
-            android:textColor="@color/sett_black"/>
+            style="@style/SettingsTextStyle"/>
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/arrow_forward"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/second_padding_end"/>
+            style="@style/SettingsImageStyle"/>
     </FrameLayout>
 </LinearLayout>
