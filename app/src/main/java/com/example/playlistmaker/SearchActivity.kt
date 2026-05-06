@@ -13,6 +13,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class SearchActivity : AppCompatActivity() {
 
@@ -59,6 +61,14 @@ class SearchActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             updateClearButtonVisibility(searchEditText.text)
         }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val trackList: MutableList<Track> = mutableListOf()
+
+        val trackAdapter = TrackAdapter(trackList)
+        recyclerView.adapter = trackAdapter
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
