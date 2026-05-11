@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="61dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/artworkUrl"
+        android:layout_width="@dimen/artwork_layout_width"
+        android:layout_height="@dimen/artwork_layout_height"
+        android:layout_marginStart="13dp"
+        android:contentDescription="@string/track_icon_description"
+        android:src="@drawable/placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/trackName"
+        style="@style/TextTrack"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/track_text_height"
+        android:layout_marginHorizontal="@dimen/track_margin_horizontal"
+        android:layout_marginTop="14dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@+id/forward"
+        app:layout_constraintStart_toEndOf="@+id/artworkUrl"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Yesterday (Remastered 2009)"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="121dp"
+        android:paddingStart="0dp"
+        app:layout_constraintStart_toStartOf="@+id/trackName"
+        app:layout_constraintTop_toBottomOf="@+id/trackName">
+
+        <TextView
+            android:id="@+id/artistName"
+            style="@style/TextArtist"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/track_text2_height"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="The Beatles"/>
+
+        <ImageView
+            android:id="@+id/separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/separator_icon_description"
+            app:srcCompat="@drawable/icon_separator"/>
+
+        <TextView
+            android:id="@+id/trackTime"
+            style="@style/TextArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/track_text2_height"
+            tools:text="2:55"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/track_margin_end"
+        android:contentDescription="@string/forward_icon_description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/arrow_forward"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/arrow_forward"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

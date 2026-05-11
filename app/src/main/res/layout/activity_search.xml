@@ -51,11 +51,23 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/clear_margin_end"
             android:layout_gravity="center_vertical|end"
+            android:contentDescription="@string/clear_icon_description"
             app:srcCompat="@drawable/clear"
             app:tint="@color/search_edit_clear"
             android:visibility="gone"/>
 
 
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/list_margin_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/list_margin_horizontal"
+        android:layout_weight="1"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

@@ -12,4 +12,9 @@
     <string name="message_title">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="offer_url" translatable="false">https://yandex.ru/legal/practicum_offer/ru/</string>
     <string name="support_email" translatable="false">egorkakegotam@yandex.ru</string>
+    <string name="track_icon_description">Обложка альбома</string>
+    <string name="separator_icon_description">Разделитель</string>
+    <string name="forward_icon_description">Вперёд</string>
+    <string name="clear_icon_description">Кнопка очистки</string>
+
 </resources>
