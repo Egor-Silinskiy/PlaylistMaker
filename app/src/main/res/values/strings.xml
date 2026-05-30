@@ -16,5 +16,9 @@
     <string name="separator_icon_description">Разделитель</string>
     <string name="forward_icon_description">Вперёд</string>
     <string name="clear_icon_description">Кнопка очистки</string>
+    <string name="no_connection">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="refresh">Обновить</string>
+    <string name="not_found">Ничего не нашлось</string>
+    <string name="base_itunes_url" translatable="false">https://itunes.apple.com/</string>
 
 </resources>

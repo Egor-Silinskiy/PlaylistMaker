@@ -31,5 +31,13 @@
     <dimen name="track_text2_height">13dp</dimen>
     <dimen name="track_margin_end">12dp</dimen>
     <dimen name="list_margin_horizontal">12dp</dimen>
-
+    <dimen name="er_text_margin_top">16dp</dimen>
+    <dimen name="er_text_margin_horizontal">24dp</dimen>
+    <dimen name="er_text_size">19sp</dimen>
+    <dimen name="er_refresh_height">36dp</dimen>
+    <dimen name="er_refresh_margin_top">24dp</dimen>
+    <dimen name="er_refresh_inset_vertical">0dp</dimen>
+    <dimen name="er_refresh_padding_horizontal">8dp</dimen>
+    <dimen name="er_refresh_padding_vertical">6dp</dimen>
+    <dimen name="er_refresh_text_size">14sp</dimen>
 </resources>

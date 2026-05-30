@@ -23,4 +23,7 @@
     <color name="search_text">#1A1B22</color>
     <color name="track_icon">#FFFFFF</color>
     <color name="track_name_text">#FFFFFF</color>
+    <color name="icon_error">#FFFFFF</color>
+    <color name="text_error">#FFFFFF</color>
+    <color name="text_button_error">#1A1B22</color>
 </resources>

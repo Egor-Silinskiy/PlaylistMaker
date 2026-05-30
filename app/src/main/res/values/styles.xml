@@ -68,6 +68,52 @@
         <item name="android:textFontWeight">400</item>
     </style>
 
+    <style name="ErrorLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">102dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="ErrorImage">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_gravity">center|top</item>
+    </style>
+
+    <style name="ErrorText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/er_text_margin_top</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginHorizontal">@dimen/er_text_margin_horizontal</item>
+        <item name="android:textSize">@dimen/er_text_size</item>
+        <item name="android:textColor">@color/text_error</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
+
+    <style name="RefreshButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/er_refresh_height</item>
+        <item name="android:layout_marginTop">@dimen/er_refresh_margin_top</item>
+        <item name="android:backgroundTint">@color/text_error</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:insetTop">@dimen/er_refresh_inset_vertical</item>
+        <item name="android:insetBottom">@dimen/er_refresh_inset_vertical</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:paddingStart">@dimen/er_refresh_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/er_refresh_padding_horizontal</item>
+        <item name="android:paddingVertical">@dimen/er_refresh_padding_vertical</item>
+        <item name="android:textSize">@dimen/er_refresh_text_size</item>
+        <item name="android:textColor">@color/text_button_error</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+
 
 
 

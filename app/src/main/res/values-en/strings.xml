@@ -13,5 +13,8 @@
     <string name="separator_icon_description">Separator</string>
     <string name="forward_icon_description">Forward</string>
     <string name="clear_icon_description">Clear button</string>
+    <string name="no_connection">Connection problems\\n\\nThe download failed. Check your internet connection</string>
+    <string name="refresh">Refresh</string>
+    <string name="not_found">Nothing was found</string>
 
 </resources>
