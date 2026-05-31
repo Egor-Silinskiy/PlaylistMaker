@@ -144,7 +144,7 @@ class SearchActivity : AppCompatActivity() {
                 call: Call<ITunesSearchResponse>,
                 response: Response<ITunesSearchResponse>
             ) {
-                if (response.code() != 200) {
+                if (!response.isSuccessful) {
                     showSearchError(query)
                     return
                 }
