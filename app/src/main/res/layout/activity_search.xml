@@ -36,6 +36,7 @@
             android:drawablePadding="@dimen/search_drawable_padding"
             android:fontFamily="@font/ys_display_regular"
             android:hint="@string/main_search"
+            android:imeOptions="actionDone"
             android:inputType="text"
             android:textColor="@color/search_text"
             android:singleLine="true"
@@ -58,6 +59,41 @@
 
 
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/noConnection"
+        style="@style/ErrorLayout"
+        android:visibility="gone">
+
+        <ImageView
+            style="@style/ErrorImage"
+            android:src="@drawable/no_internet_error"
+            android:contentDescription="@string/no_connection"/>
+
+        <TextView
+            style="@style/ErrorText"
+            android:text="@string/no_connection" />
+
+        <Button
+            android:id="@+id/refreshButton"
+            style="@style/RefreshButton"
+            android:text="@string/refresh" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nothingFound"
+        style="@style/ErrorLayout"
+        android:visibility="gone">
+
+        <ImageView
+            style="@style/ErrorImage"
+            android:src="@drawable/not_found_error"
+            android:contentDescription="@string/not_found"/>
+
+        <TextView
+            style="@style/ErrorText"
+            android:text="@string/not_found" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
