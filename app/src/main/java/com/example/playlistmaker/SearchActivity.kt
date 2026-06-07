@@ -32,8 +32,12 @@ class SearchActivity : AppCompatActivity() {
     private var currentSearchText: String = ""
     private var lastFailedSearchText: String = ""
     private lateinit var trackAdapter: TrackAdapter
+    private lateinit var historyAdapter: TrackAdapter
     private lateinit var iTunesApi: ITunesApi
+    private lateinit var searchHistory: SearchHistory
     private lateinit var recyclerView: RecyclerView
+    private lateinit var tracksHistory: RecyclerView
+    private lateinit var searchHistoryContainer: LinearLayout
     private lateinit var nothingFound: LinearLayout
     private lateinit var noConnection: LinearLayout
 
@@ -47,6 +51,10 @@ class SearchActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ITunesApi::class.java)
+
+        searchHistory = SearchHistory(
+            getSharedPreferences(SEARCH_HISTORY_PREFERENCES, Context.MODE_PRIVATE)
+        )
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -81,6 +89,19 @@ class SearchActivity : AppCompatActivity() {
         searchEditText.doOnTextChanged { text, _, _, _ ->
             currentSearchText = text?.toString().orEmpty()
             updateClearButtonVisibility(text)
+            if (currentSearchText.isEmpty() && searchEditText.hasFocus()) {
+                showSearchHistory()
+            } else {
+                hideSearchHistory()
+            }
+        }
+
+        searchEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && currentSearchText.isEmpty()) {
+                showSearchHistory()
+            } else {
+                hideSearchHistory()
+            }
         }
 
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
@@ -98,18 +119,36 @@ class SearchActivity : AppCompatActivity() {
         }
 
         recyclerView = findViewById(R.id.recyclerView)
+        tracksHistory = findViewById(R.id.tracksHistory)
+        searchHistoryContainer = findViewById(R.id.searchHistory)
         nothingFound = findViewById(R.id.nothingFound)
         noConnection = findViewById(R.id.noConnection)
         val refreshButton = findViewById<Button>(R.id.refreshButton)
+        val clearHistoryButton = findViewById<Button>(R.id.clearHistoryButton)
 
         refreshButton.setOnClickListener {
             searchTracks(lastFailedSearchText)
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
+        tracksHistory.layoutManager = LinearLayoutManager(this)
 
-        trackAdapter = TrackAdapter(mutableListOf())
+        trackAdapter = TrackAdapter(mutableListOf()) { track ->
+            searchHistory.addTrack(track)
+            updateHistoryList()
+        }
         recyclerView.adapter = trackAdapter
+
+        historyAdapter = TrackAdapter(mutableListOf())
+        tracksHistory.adapter = historyAdapter
+
+        clearHistoryButton.setOnClickListener {
+            searchHistory.clearHistory()
+            updateHistoryList()
+            hideSearchHistory()
+        }
+
+        updateHistoryList()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -137,6 +176,7 @@ class SearchActivity : AppCompatActivity() {
             return
         }
 
+        hideSearchHistory()
         hideSearchResults()
 
         iTunesApi.search(query).enqueue(object : Callback<ITunesSearchResponse> {
@@ -152,8 +192,10 @@ class SearchActivity : AppCompatActivity() {
                 val tracks = response.body()
                     ?.results
                     .orEmpty()
-                    .map { track ->
+                    .mapNotNull { track ->
+                        val trackId = track.trackId ?: return@mapNotNull null
                         Track(
+                            trackId = trackId,
                             trackName = track.trackName.orEmpty(),
                             artistName = track.artistName.orEmpty(),
                             trackTime = formatTrackTime(track.trackTimeMillis ?: 0L),
@@ -181,6 +223,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showSearchResults() {
         recyclerView.visibility = View.VISIBLE
+        searchHistoryContainer.visibility = View.GONE
         nothingFound.visibility = View.GONE
         noConnection.visibility = View.GONE
     }
@@ -193,6 +236,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showNothingFound() {
         recyclerView.visibility = View.GONE
+        searchHistoryContainer.visibility = View.GONE
         nothingFound.visibility = View.VISIBLE
         noConnection.visibility = View.GONE
     }
@@ -201,8 +245,35 @@ class SearchActivity : AppCompatActivity() {
         lastFailedSearchText = query
         trackAdapter.setTracks(emptyList())
         recyclerView.visibility = View.GONE
+        searchHistoryContainer.visibility = View.GONE
         nothingFound.visibility = View.GONE
         noConnection.visibility = View.VISIBLE
+    }
+
+    private fun updateHistoryList() {
+        historyAdapter.setTracks(searchHistory.getHistory())
+    }
+
+    private fun showSearchHistory() {
+        val history = searchHistory.getHistory()
+        if (history.isEmpty()) {
+            hideSearchHistory()
+            return
+        }
+
+        historyAdapter.setTracks(history)
+        searchHistoryContainer.visibility = View.VISIBLE
+        recyclerView.visibility = View.GONE
+        nothingFound.visibility = View.GONE
+        noConnection.visibility = View.GONE
+    }
+
+    private fun hideSearchHistory() {
+        searchHistoryContainer.visibility = View.GONE
+    }
+
+    companion object {
+        private const val SEARCH_HISTORY_PREFERENCES = "search_history_preferences"
     }
 
 }

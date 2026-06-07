@@ -16,7 +16,7 @@
         app:title="@string/main_search"
         app:titleTextColor="@color/search_title_text"
         app:titleTextAppearance="@style/TitleTextStyle"
-        app:contentInsetStart="@dimen/toolbar_inset_start" />
+        app:contentInsetStart="@dimen/toolbar_inset_start"/>
 
     <FrameLayout
         android:id="@+id/container"
@@ -44,7 +44,7 @@
             android:textColorHint="@color/search_edit_hint"
             android:theme="@style/BlueCursorTheme"
             android:textFontWeight="400"
-            android:textSize="@dimen/second_text_size" />
+            android:textSize="@dimen/second_text_size"/>
 
         <ImageView
             android:id="@+id/clearImage"
@@ -61,6 +61,37 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/searchHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/search_history_margin_top"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/SearchHistoryText"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:text="@string/search_history"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tracksHistory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/search_rw_margin_top"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <Button
+            android:id="@+id/clearHistoryButton"
+            style="@style/ClearHistoryButton"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/search_button_margin_vert"
+            android:text="@string/clear_history"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/noConnection"
         style="@style/ErrorLayout"
         android:visibility="gone">
@@ -72,12 +103,12 @@
 
         <TextView
             style="@style/ErrorText"
-            android:text="@string/no_connection" />
+            android:text="@string/no_connection"/>
 
         <Button
             android:id="@+id/refreshButton"
             style="@style/RefreshButton"
-            android:text="@string/refresh" />
+            android:text="@string/refresh"/>
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +123,7 @@
 
         <TextView
             style="@style/ErrorText"
-            android:text="@string/not_found" />
+            android:text="@string/not_found"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -104,6 +135,6 @@
         android:layout_marginEnd="@dimen/list_margin_horizontal"
         android:layout_weight="1"
         android:visibility="visible"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>
