@@ -29,7 +29,7 @@
             android:text="@string/sett_theme"
             style="@style/SettingsTextStyle"/>
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchSett"
             android:layout_width="@dimen/second_layout_size"
             android:layout_height="40dp"
@@ -37,7 +37,7 @@
             android:paddingEnd="6dp"
             android:thumbTint="@color/thumb_tint"
             android:trackTint="@color/track_tint"
-            tools:checked="true" />
+            tools:checked="true"/>
 
     </FrameLayout>
 
@@ -52,12 +52,12 @@
         <TextView
             android:id="@+id/textView4"
             style="@style/SettingsTextStyle"
-            android:text="@string/sett_share" />
+            android:text="@string/sett_share"/>
 
         <ImageView
             android:id="@+id/imageView1"
             style="@style/SettingsImageStyle"
-            app:srcCompat="@drawable/share" />
+            app:srcCompat="@drawable/share"/>
     </FrameLayout>
 
     <FrameLayout
