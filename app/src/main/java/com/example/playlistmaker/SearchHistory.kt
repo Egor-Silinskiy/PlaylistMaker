@@ -5,9 +5,12 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import androidx.core.content.edit
 
-class SearchHistory(private val sharedPreferences: SharedPreferences) {
+class SearchHistory(
 
-    private val gson = Gson()
+    private val sharedPreferences: SharedPreferences,
+    private val gson: Gson
+    ) {
+
 
     fun getHistory(): List<Track> {
         val historyJson = sharedPreferences.getString(HISTORY_KEY, null) ?: return emptyList()
