@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.switchmaterial.SwitchMaterial
+import androidx.core.content.edit
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +31,24 @@ class SettingsActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             val settingsIntent = Intent(this, MainActivity::class.java)
             startActivity(settingsIntent)
+        }
+
+        val sharedPreferences = getSharedPreferences(Constants.SETTINGS_PREFERENCES, MODE_PRIVATE)
+        val themeSwitcher = findViewById<SwitchMaterial>(R.id.switchSett)
+        themeSwitcher.isChecked = sharedPreferences.getBoolean(Constants.DARK_THEME_KEY, false)
+
+        themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
+            sharedPreferences.edit {
+                putBoolean(Constants.DARK_THEME_KEY, checked)
+            }
+
+            AppCompatDelegate.setDefaultNightMode(
+                if (checked) {
+                    AppCompatDelegate.MODE_NIGHT_YES
+                } else {
+                    AppCompatDelegate.MODE_NIGHT_NO
+                }
+            )
         }
 
         val shareFrame = findViewById<FrameLayout>(R.id.shareFrame)

@@ -61,6 +61,39 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/searchHistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/search_history_margin_top"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/searchHistoryTitle"
+            style="@style/SearchHistoryText"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:text="@string/search_history" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/search_rw_margin_top"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <Button
+            android:id="@+id/clearHistoryButton"
+            style="@style/ClearHistoryButton"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/search_button_margin_vert"
+            android:text="@string/clear_history"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/noConnection"
         style="@style/ErrorLayout"
         android:visibility="gone">
@@ -94,16 +127,5 @@
             style="@style/ErrorText"
             android:text="@string/not_found" />
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/list_margin_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="@dimen/list_margin_horizontal"
-        android:layout_weight="1"
-        android:visibility="visible"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

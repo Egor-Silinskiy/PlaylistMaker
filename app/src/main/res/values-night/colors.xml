@@ -26,4 +26,6 @@
     <color name="icon_error">#FFFFFF</color>
     <color name="text_error">#FFFFFF</color>
     <color name="text_button_error">#1A1B22</color>
+    <color name="button_clear">#1A1B22</color>
+    <color name="history_text">#FFFFFF</color>
 </resources>

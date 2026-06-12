@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,9 +33,14 @@ class SearchActivity : AppCompatActivity() {
 
     private var currentSearchText: String = ""
     private var lastFailedSearchText: String = ""
+    private var isSearchHistoryVisible: Boolean = false
     private lateinit var trackAdapter: TrackAdapter
     private lateinit var iTunesApi: ITunesApi
+    private lateinit var searchHistory: SearchHistory
     private lateinit var recyclerView: RecyclerView
+    private lateinit var searchHistoryContainer: LinearLayout
+    private lateinit var searchHistoryTitle: TextView
+    private lateinit var clearHistoryButton: Button
     private lateinit var nothingFound: LinearLayout
     private lateinit var noConnection: LinearLayout
 
@@ -47,6 +54,11 @@ class SearchActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ITunesApi::class.java)
+
+        searchHistory = SearchHistory(
+            getSharedPreferences(SEARCH_HISTORY_PREFERENCES, Context.MODE_PRIVATE),
+            Gson()
+        )
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -81,6 +93,19 @@ class SearchActivity : AppCompatActivity() {
         searchEditText.doOnTextChanged { text, _, _, _ ->
             currentSearchText = text?.toString().orEmpty()
             updateClearButtonVisibility(text)
+            if (currentSearchText.isEmpty() && searchEditText.hasFocus()) {
+                showSearchHistory()
+            } else {
+                hideSearchHistory()
+            }
+        }
+
+        searchEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && currentSearchText.isEmpty()) {
+                showSearchHistory()
+            } else {
+                hideSearchHistory()
+            }
         }
 
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
@@ -98,9 +123,12 @@ class SearchActivity : AppCompatActivity() {
         }
 
         recyclerView = findViewById(R.id.recyclerView)
+        searchHistoryContainer = findViewById(R.id.searchHistory)
+        searchHistoryTitle = findViewById(R.id.searchHistoryTitle)
         nothingFound = findViewById(R.id.nothingFound)
         noConnection = findViewById(R.id.noConnection)
         val refreshButton = findViewById<Button>(R.id.refreshButton)
+        clearHistoryButton = findViewById(R.id.clearHistoryButton)
 
         refreshButton.setOnClickListener {
             searchTracks(lastFailedSearchText)
@@ -108,8 +136,18 @@ class SearchActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        trackAdapter = TrackAdapter(mutableListOf())
+        trackAdapter = TrackAdapter(mutableListOf()) { track ->
+            if (!isSearchHistoryVisible) {
+                searchHistory.addTrack(track)
+            }
+        }
         recyclerView.adapter = trackAdapter
+
+        clearHistoryButton.setOnClickListener {
+            searchHistory.clearHistory()
+            trackAdapter.setTracks(emptyList())
+            hideSearchHistory()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -137,6 +175,7 @@ class SearchActivity : AppCompatActivity() {
             return
         }
 
+        hideSearchHistory()
         hideSearchResults()
 
         iTunesApi.search(query).enqueue(object : Callback<ITunesSearchResponse> {
@@ -152,8 +191,10 @@ class SearchActivity : AppCompatActivity() {
                 val tracks = response.body()
                     ?.results
                     .orEmpty()
-                    .map { track ->
+                    .mapNotNull { track ->
+                        val trackId = track.trackId ?: return@mapNotNull null
                         Track(
+                            trackId = trackId,
                             trackName = track.trackName.orEmpty(),
                             artistName = track.artistName.orEmpty(),
                             trackTime = formatTrackTime(track.trackTimeMillis ?: 0L),
@@ -180,12 +221,17 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun showSearchResults() {
+        isSearchHistoryVisible = false
+        searchHistoryContainer.visibility = View.VISIBLE
+        searchHistoryTitle.visibility = View.GONE
+        clearHistoryButton.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
         nothingFound.visibility = View.GONE
         noConnection.visibility = View.GONE
     }
 
     private fun hideSearchResults() {
+        searchHistoryContainer.visibility = View.GONE
         recyclerView.visibility = View.GONE
         nothingFound.visibility = View.GONE
         noConnection.visibility = View.GONE
@@ -193,6 +239,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showNothingFound() {
         recyclerView.visibility = View.GONE
+        searchHistoryContainer.visibility = View.GONE
         nothingFound.visibility = View.VISIBLE
         noConnection.visibility = View.GONE
     }
@@ -201,8 +248,35 @@ class SearchActivity : AppCompatActivity() {
         lastFailedSearchText = query
         trackAdapter.setTracks(emptyList())
         recyclerView.visibility = View.GONE
+        searchHistoryContainer.visibility = View.GONE
         nothingFound.visibility = View.GONE
         noConnection.visibility = View.VISIBLE
+    }
+
+    private fun showSearchHistory() {
+        val history = searchHistory.getHistory()
+        if (history.isEmpty()) {
+            hideSearchHistory()
+            return
+        }
+
+        isSearchHistoryVisible = true
+        trackAdapter.setTracks(history)
+        searchHistoryContainer.visibility = View.VISIBLE
+        searchHistoryTitle.visibility = View.VISIBLE
+        clearHistoryButton.visibility = View.VISIBLE
+        recyclerView.visibility = View.VISIBLE
+        nothingFound.visibility = View.GONE
+        noConnection.visibility = View.GONE
+    }
+
+    private fun hideSearchHistory() {
+        isSearchHistoryVisible = false
+        searchHistoryContainer.visibility = View.GONE
+    }
+
+    companion object {
+        private const val SEARCH_HISTORY_PREFERENCES = "search_history_preferences"
     }
 
 }
