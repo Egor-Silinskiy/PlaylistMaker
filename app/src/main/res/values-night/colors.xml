@@ -28,4 +28,6 @@
     <color name="text_button_error">#1A1B22</color>
     <color name="button_clear">#1A1B22</color>
     <color name="history_text">#FFFFFF</color>
+    <color name="player_background">#1A1B22</color>
+    <color name="player_text">#FFFFFF</color>
 </resources>
