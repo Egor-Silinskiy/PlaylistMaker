@@ -51,5 +51,8 @@
     <dimen name="player_margin_horizontal">24dp</dimen>
     <dimen name="player_text_margin_top">12dp</dimen>
     <dimen name="player_image_margin_top">54dp</dimen>
+    <dimen name="player_playback_margin_top">30dp</dimen>
+    <dimen name="player_right_padding_end">16dp</dimen>
+    <dimen name="player_margin_bottom">20dp</dimen>
 
 </resources>

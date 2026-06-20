@@ -64,9 +64,13 @@
             android:id="@+id/toPlaylist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/player_image_margin_top"
             app:layout_constraintTop_toBottomOf="@id/artistName"
-            app:layout_constraintStart_toStartOf="@id/cover"
+            app:layout_constraintTop_toTopOf="@id/playbackButton"
+            app:layout_constraintBottom_toBottomOf="@id/playbackButton"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            app:layout_constraintEnd_toStartOf="@id/playbackButton"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             android:src="@drawable/add_to_playlist_51"
             android:contentDescription="@string/to_playlist" />
 
@@ -74,59 +78,61 @@
             android:id="@+id/toFavourites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/player_image_margin_top"
-            app:layout_constraintTop_toBottomOf="@id/artistName"
-            app:layout_constraintEnd_toEndOf="@id/cover"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/to_favourites"
             android:src="@drawable/heart"
-            android:contentDescription="@string/to_favourites" />
+            app:layout_constraintBottom_toBottomOf="@+id/playbackButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/playbackButton"
+            app:layout_constraintTop_toTopOf="@+id/playbackButton" />
 
-        <com.example.playlistmaker.player.ui.custom.PlaybackButtonView
+        <ImageView
             android:id="@+id/playbackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_30dp"
+            android:layout_marginTop="@dimen/player_playback_margin_top"
+            android:contentDescription="@string/player_playback_description"
             app:layout_constraintTop_toBottomOf="@id/artistName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:playIcon="@drawable/ic_play_100"
-            app:pauseIcon="@drawable/ic_pause_100" />
+            app:layout_constraintStart_toEndOf="@id/toPlaylist"
+            app:layout_constraintEnd_toStartOf="@id/toFavourites"
+            android:src="@drawable/playback_button"/>
 
         <TextView
-            style="@style/Text_14sp"
+            style="@style/PlayerMainTextStyle"
             android:id="@+id/remainingTime"
-            android:layout_marginTop="@dimen/size_4dp"
+            android:layout_marginTop="@dimen/player_margin"
             android:textFontWeight="500"
             app:layout_constraintTop_toBottomOf="@id/playbackButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/remainingTime" />
+            android:text="@string/remaining_time" />
 
         <TextView
-            style="@style/Text_13_Player"
+            style="@style/PlayerPrimaryLeftTextStyle"
             android:id="@+id/trackTime"
-            android:layout_marginTop="@dimen/size_30dp"
+            android:layout_marginTop="@dimen/player_playback_margin_top"
             android:text="@string/track_time"
             app:layout_constraintTop_toBottomOf="@id/remainingTime"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            style="@style/TextView_13_2_Player"
+            style="@style/PlayerPrimaryRightTextStyle"
             android:id="@+id/trackTime2"
-            android:layout_marginTop="@dimen/size_30dp"
+            android:layout_marginTop="@dimen/player_playback_margin_top"
             tools:text="5:35"
             app:layout_constraintStart_toEndOf="@id/trackTime"
             app:layout_constraintTop_toBottomOf="@id/remainingTime"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            style="@style/Text_13_Player"
+            style="@style/PlayerPrimaryLeftTextStyle"
             android:id="@+id/collectionName"
-            android:text="@string/collection_name"
+            android:text="@string/album"
             app:layout_constraintTop_toBottomOf="@id/trackTime"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            style="@style/TextView_13_2_Player"
+            style="@style/PlayerPrimaryRightTextStyle"
             android:id="@+id/collectionName2"
             tools:text="Yesterday (Remastered 2009)"
             app:layout_constraintStart_toEndOf="@id/collectionName"
@@ -141,14 +147,14 @@
             app:constraint_referenced_ids="collectionName,collectionName2" />
 
         <TextView
-            style="@style/Text_13_Player"
+            style="@style/PlayerPrimaryLeftTextStyle"
             android:id="@+id/releaseDate"
             android:text="@string/release_date"
             app:layout_constraintTop_toBottomOf="@id/collectionName"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            style="@style/TextView_13_2_Player"
+            style="@style/PlayerPrimaryRightTextStyle"
             android:id="@+id/releaseDate2"
             tools:text="1965"
             app:layout_constraintStart_toEndOf="@id/releaseDate"
@@ -163,14 +169,14 @@
             app:constraint_referenced_ids="releaseDate,releaseDate2" />
 
         <TextView
-            style="@style/Text_13_Player"
+            style="@style/PlayerPrimaryLeftTextStyle"
             android:id="@+id/primaryGenreName"
-            android:text="@string/primary_genre_name"
+            android:text="@string/genre"
             app:layout_constraintTop_toBottomOf="@id/releaseDate"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            style="@style/TextView_13_2_Player"
+            style="@style/PlayerPrimaryRightTextStyle"
             android:id="@+id/primaryGenreName2"
             tools:text="Rock"
             app:layout_constraintStart_toEndOf="@id/primaryGenreName"
@@ -185,19 +191,19 @@
             app:constraint_referenced_ids="primaryGenreName,primaryGenreName2" />
 
         <TextView
-            style="@style/Text_13_Player"
+            style="@style/PlayerPrimaryLeftTextStyle"
             android:id="@+id/country"
             android:text="@string/country"
-            android:layout_marginBottom="@dimen/size_20dp"
+            android:layout_marginBottom="@dimen/player_margin_bottom"
             app:layout_constraintTop_toBottomOf="@id/primaryGenreName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
-            style="@style/TextView_13_2_Player"
+            style="@style/PlayerPrimaryRightTextStyle"
             android:id="@+id/country2"
             tools:text="Великобритания"
-            android:layout_marginBottom="@dimen/size_20dp"
+            android:layout_marginBottom="@dimen/player_margin_bottom"
             app:layout_constraintStart_toEndOf="@id/country"
             app:layout_constraintTop_toBottomOf="@id/primaryGenreName"
             app:layout_constraintEnd_toEndOf="parent"

@@ -171,6 +171,30 @@
         <item name="android:textFontWeight">400</item>
     </style>
 
+    <style name="PlayerPrimaryLeftTextStyle"> 13sp---------------------------
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#AEAFB4</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="PlayerPrimaryRightTextStyle"> 13-2sp--------------------------
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:paddingEnd">@dimen/player_right_padding_end</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/player_text</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:gravity">end|center_vertical</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 
 
 
