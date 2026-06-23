@@ -5,5 +5,11 @@ data class Track(
     val trackName: String, // Название композиции //
     val artistName: String, // Имя исполнителя //
     val trackTime: String, // Продолжительность трека //
-    val artworkUrl: String // Ссылка на изображение обложки //
-)
+    val artworkUrl100: String, // Ссылка на изображение обложки //
+    val collectionName: String?, // Альбом //
+    val releaseDate: String?, // Год //
+    val primaryGenreName: String?, // Жанр //
+    val country: String? // Страна //
+) {
+    fun getCoverArtwork() = artworkUrl100.replaceAfterLast('/', "512x512bb.jpg")
+}

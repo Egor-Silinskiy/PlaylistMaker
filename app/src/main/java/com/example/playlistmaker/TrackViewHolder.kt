@@ -15,12 +15,15 @@ class TrackViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val trackTime: TextView = itemView.findViewById(R.id.trackTime)
 
     fun bind(model: Track) {
+
+        val radiusInPx2 = 2
+
         Glide.with(itemView)
-            .load(model.artworkUrl)
+            .load(model.artworkUrl100)
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.placeholder)
             .centerCrop()
-            .transform(RoundedCorners(2))
+            .transform(RoundedCorners(radiusInPx2))
             .into(artwork)
 
         trackName.text = model.trackName
