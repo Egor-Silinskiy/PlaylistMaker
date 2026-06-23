@@ -15,6 +15,7 @@
     <string name="track_icon_description">Обложка альбома</string>
     <string name="separator_icon_description">Разделитель</string>
     <string name="forward_icon_description">Вперёд</string>
+    <string name="back">Назад</string>
     <string name="clear_icon_description">Кнопка очистки</string>
     <string name="no_connection">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
     <string name="refresh">Обновить</string>
@@ -22,5 +23,14 @@
     <string name="base_itunes_url" translatable="false">https://itunes.apple.com/</string>
     <string name="search_history">Вы искали</string>
     <string name="clear_history">Очистить историю</string>
+    <string name="to_playlist">Добавить в плейлист</string>
+    <string name="to_favourites">Добавить в избранное</string>
+    <string name="player_playback_description">Кнопка воспроизведения</string>
+    <string name="remaining_time" translatable="false">00:00</string>
+    <string name="track_time">Длительность</string>
+    <string name="album">Альбом</string>
+    <string name="release_date">Год</string>
+    <string name="genre">Жанр</string>
+    <string name="country">Страна</string>
 
 </resources>

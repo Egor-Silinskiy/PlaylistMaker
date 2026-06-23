@@ -140,6 +140,7 @@ class SearchActivity : AppCompatActivity() {
             if (!isSearchHistoryVisible) {
                 searchHistory.addTrack(track)
             }
+            openAudioPlayer(track)
         }
         recyclerView.adapter = trackAdapter
 
@@ -198,7 +199,11 @@ class SearchActivity : AppCompatActivity() {
                             trackName = track.trackName.orEmpty(),
                             artistName = track.artistName.orEmpty(),
                             trackTime = formatTrackTime(track.trackTimeMillis ?: 0L),
-                            artworkUrl = track.artworkUrl100.orEmpty()
+                            artworkUrl100 = track.artworkUrl100.orEmpty(),
+                            collectionName = track.collectionName,
+                            releaseDate = track.releaseDate,
+                            primaryGenreName = track.primaryGenreName.orEmpty(),
+                            country = track.country.orEmpty()
                         )
                     }
 
@@ -273,6 +278,12 @@ class SearchActivity : AppCompatActivity() {
     private fun hideSearchHistory() {
         isSearchHistoryVisible = false
         searchHistoryContainer.visibility = View.GONE
+    }
+
+    private fun openAudioPlayer(track: Track) {
+        val intent = Intent(this, AudioPlayer::class.java)
+        intent.putExtra(AudioPlayer.TRACK_EXTRA, track)
+        startActivity(intent)
     }
 
     companion object {
