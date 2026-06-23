@@ -1,5 +1,6 @@
 package com.example.playlistmaker
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -11,7 +12,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.google.gson.Gson
 
 class AudioPlayer : AppCompatActivity() {
 
@@ -29,10 +29,7 @@ class AudioPlayer : AppCompatActivity() {
             finish()
         }
 
-        val track = intent.getStringExtra(TRACK_EXTRA)
-            ?.let { trackJson ->
-                runCatching { Gson().fromJson(trackJson, Track::class.java) }.getOrNull()
-            }
+        val track = getTrackFromIntent()
 
         if (track == null) {
             finish()
@@ -44,14 +41,17 @@ class AudioPlayer : AppCompatActivity() {
 
     private fun bindTrack(track: Track) {
 
-        val radiusInPx8 = 8
+        val radiusInDp = 8
+        val density = resources.displayMetrics.density
+        val radiusInPx = (radiusInDp * density).toInt()
+
 
         Glide.with(this)
             .load(track.getCoverArtwork())
             .placeholder(R.drawable.placeholder_big)
             .error(R.drawable.placeholder_big)
             .centerCrop()
-            .transform(RoundedCorners(radiusInPx8))
+            .transform(RoundedCorners(radiusInPx))
             .into(findViewById(R.id.cover))
 
         findViewById<TextView>(R.id.trackName).text = track.trackName
@@ -78,6 +78,15 @@ class AudioPlayer : AppCompatActivity() {
         val text = value.orEmpty()
         group.visibility = if (text.isBlank()) View.GONE else View.VISIBLE
         textView.text = text
+    }
+
+    private fun getTrackFromIntent(): Track? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(TRACK_EXTRA, Track::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(TRACK_EXTRA)
+        }
     }
 
     companion object {

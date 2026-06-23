@@ -282,7 +282,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun openAudioPlayer(track: Track) {
         val intent = Intent(this, AudioPlayer::class.java)
-        intent.putExtra(AudioPlayer.TRACK_EXTRA, Gson().toJson(track))
+        intent.putExtra(AudioPlayer.TRACK_EXTRA, track)
         startActivity(intent)
     }
 

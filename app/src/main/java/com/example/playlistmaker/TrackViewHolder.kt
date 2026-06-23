@@ -16,14 +16,16 @@ class TrackViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     fun bind(model: Track) {
 
-        val radiusInPx2 = 2
+        val radiusInDp = 2
+        val density = itemView.context.resources.displayMetrics.density
+        val radiusInPx = (radiusInDp * density).toInt()
 
         Glide.with(itemView)
             .load(model.artworkUrl100)
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.placeholder)
             .centerCrop()
-            .transform(RoundedCorners(radiusInPx2))
+            .transform(RoundedCorners(radiusInPx))
             .into(artwork)
 
         trackName.text = model.trackName
